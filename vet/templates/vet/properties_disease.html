@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{disease.title}}
+
+{% endblock %}
+
+
+
+
+    {% block content %}
+        <div class="col-sm-9 " >
+            <div class="card mb-3" >
+                <div class="card-header" align="center">
+                    <h4 class="card-title" class="badge badge-secondary" style="color: #1964b0"> {{disease.title}}</h4>
+                </div>
+
+                <div class="card-body" align="center">
+                    {% if disease.photo %}
+                        <img src="{{ disease.photo.url }}" width = "450" class = "float-left mr-3">
+                    {% endif %}
+                        <h5 style="margin-top: 2rem">Опис захворювання</h5>
+                        <p class="card-text"> {{ disease.feature|safe|linebreaks}}</p>
+                    {#   if user is authorised he can view treatment #}
+                    {% if request.user.is_active %}
+
+                        <h5>Рекомендації щодо лікування</h5>
+
+                        <p class="card-text"> {{ disease.treatment|safe|linebreaks }}</p>
+
+                        <div class="card mb-3" >
+                            <div class="card-header" align="center">
+                                <h4 > Чи бажаєте отримати детальну онлайн-консультацію ветеринарного лікаря акушера-гінеколога?</h4>
+                            </div>
+                                <a href="{% url 'vet_members_list' %}" class="btn btn-outline-info custom "> Так</a>
+                                <a href="{% url 'diseases_list' %}" class="btn btn-outline-secondary custom" style="margin-top: 1rem">
+                                    Ні. Xарактеристика симптомів патології не співпадає з симптомами у моєї тварини </a>
+                        </div>
+
+
+                    {% else %}
+
+                        <div class="card mb-3"  >
+                            <div class="card-header" align="center">
+                                <h4> Чи бажаєте дізнатись більше про методи діагностики та лікування даної патології? </h4>
+                            </div>
+                            <div class="card-body" align="center">
+                                <a href="{% url 'login' %}?next={{ request.path|urlencode }}" class="btn btn-outline-success custom "> Так </a>
+
+                                <a href="{% url 'diseases_list' %}" class="btn btn-outline-secondary custom " style="margin-top: 1rem">
+                                    Ні. Xарактеристика симптомів патології не співпадає з симптомами у моєї тварини </a>
+
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+    {% endblock %}
+    {% block sidebar %}
+
+        <div class="col-md-3 " style="height: 30rem">
+
+            {% include "inc/_sideform.html" %}
+        </div>
+    {% endblock %}
+</div>

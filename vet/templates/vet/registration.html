@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}
+   Реєстрація:: {{block.super}}
+
+{% endblock %}
+
+
+
+{% block content %}
+<div class="mb-3">
+    <div class="card mb-3 w-50" >
+     <div class="card-body" >
+        <h1> Реєстрація </h1>
+
+        <form  method="post" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            {{user_form.as_p}}
+            {{animal_form.as_p}}
+           <button type="submit" class="btn btn-success btn-block" style="margin-bottom: 5px !important; background: #7aba05; color: #fff"> Реєстрація </button>
+        </form>
+     </div>
+    </div>
+</div>
+{% endblock %}
+

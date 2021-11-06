@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    {{disease.title}}
+
+{% endblock %}
+
+{% block sidebar %}
+{% include "inc/_sideform.html" %}
+{% endblock %}
+
+{% block content %}
+{#<div class="col-sm-9 " >#}
+<div class="card mb-3" >
+
+    <div class="card-body" align="center">
+{#        {% for simage in disease.photo.all %}#}
+            <h1 class="card-title" class="badge badge-secondary" style="color: #772953"> {{disease.title}}</h1>
+            {% if disease.photo %}
+{#            <a href="#" class="image" width = "350"><img src="{{ simage.image.url }}"></a>#}
+            <img src="{{ disease.photo.url }}" width = "450" class = "float-left mr-3">
+            {% endif %}
+{#        {% endfor %}#}
+
+        <p class="card-text"> {{ disease.treatment|safe|linebreaks }}</p>
+    </div>
+
+    <div class="card mb-3" >
+        <h4 align="center">
+            Чи бажаєте отримати детальну онлайн-консультацію ветеринарного лікаря акушера-гінеколога?</h4>
+{#        <div class="col-sm-5" >#}
+            <a href="{% url 'vet_members_list' %}" class="btn btn-primary btn-lg "> <p >Так</p> </a>
+{#        </div>#}
+{#        <div class="col-sm-5">#}
+            <a href="{% url 'diseases_list' %}" class="btn btn-secondary btn-lg ">
+                <p >Ні. Xарактеристика симптомів патології не співпадає з симптомами у моєї тварини</p> </a>
+{#        </div>#}
+
+{#            <a href="#" class="card-link">Card link</a>#}
+{#            <a href="#" class="card-link">Another link</a>#}
+    </div>
+</div>
+{#</div>#}
+</div>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% load static %}
+
+<link href="{% static 'css/sideform_style.css' %}" rel="stylesheet" >
+
+<div class="contact-info">
+    <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/>
+    <h2>Зв'яжіться з нами</h2>
+    <h4>Запис на онлайн консультацію</h4>
+</div>
+<div class="col-md-3">
+    <a href="{% url 'send_mail' %}" class="btn btn-spatial" style="margin-bottom: 5px !important; background: #7aba05; color: #fff">Записатись!</a>
+
+
+</div>

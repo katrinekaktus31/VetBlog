@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Онлайн консультації
+
+{% endblock %}
+
+
+
+
+{% block content %}
+    <link href="{% static 'css/send_mail_style.css' %}" rel="stylesheet" >
+    <div class="container contact">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="contact-info">
+				<img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/>
+				<h2>Зв'яжіться з нами</h2>
+				<h4>Ми з радістю допоможемо!</h4>
+			</div>
+		</div>
+        <div class="col-md-9">
+            <form action="{% url 'send_mail' %}" method="post">
+            <div class="contact-form" >
+
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-primary btn-block"> Відправити повідомлення </button>
+            </div>
+            </form>
+        </div>
+	</div>
+</div>
+
+{% endblock %}

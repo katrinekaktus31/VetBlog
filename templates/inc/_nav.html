@@ -1,0 +1,70 @@
+{% load static %}
+<style>
+    .nav-link{
+    color: #fefefe;
+}
+
+</style>
+{#<nav class="navbar navbar-expand-lg navbar-light bg-white py-3 shadow-sm">#}
+{#  <a href="#" class="navbar-brand font-weight-bold d-block d-lg-none">MegaMenu</a>#}
+{#  <button type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbars" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler">#}
+{#          <span class="navbar-toggler-icon"></span>#}
+{#      </button>#}
+{#  <div id="navbarContent" class="collapse navbar-collapse">#}
+{#    <ul class="navbar-nav mx-auto">#}
+{#      <li class="nav-item"><a href="" class="nav-link font-weight-bold text-uppercase">About</a></li>#}
+{#      <li class="nav-item"><a href="" class="nav-link font-weight-bold text-uppercase">Services</a></li>#}
+{#      <li class="nav-item"><a href="" class="nav-link font-weight-bold text-uppercase">Contact</a></li>#}
+{#    </ul>#}
+{#  </div>#}
+{#</nav>#}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark roboto normal">
+  <div class="container-fluid ">
+    <div class="mx-auto d-sm-flex d-block flex-sm-nowrap">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+    <div class="navbar-brand font-weight-bold text-uppercase">
+
+      <ul class="nav  nav-fill" >
+          <li class="nav-item " >
+              <a class="nav-link  font-weight-bold text-uppercase" href={% url 'general' %}> Головна</a>
+          </li>
+
+          <li class="nav-item " >
+              <a class="nav-link  font-weight-bold text-uppercase" href="{% url 'blog' %}">Блог</a>
+          </li>
+{#          <li class="nav-item">#}
+{#              <a class="nav-link  font-weight-bold text-uppercase" href="{% url 'diseases_list' %}">Кішки </a>#}
+{#          </li>#}
+          <li class="nav-item">
+              <a class="nav-link  font-weight-bold text-uppercase" href="{% url 'diseases_list' %}">Патології Вагітності</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link  font-weight-bold text-uppercase" href="{% url 'vet_members_list' %}">Про нас</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link  font-weight-bold text-uppercase" href="{% url 'send_mail' %}">Консультації</a>
+          </li>
+
+        {% if request.user.is_active and request.user.is_staff %}
+            <li class="nav-item">
+                <a class="nav-link  font-weight-bold text-uppercase" href="{% url 'create_news' %}">Додати новину</a>
+            </li>
+         {% endif %}
+      </ul>
+    </div>
+    </div>
+  </div>
+
+
+      <span class="navbar-text  font-weight-bold text-uppercase " align="right">
+                    {% if request.user.is_authenticated %}
+                        Вітаємо, {{ user.username }}  |  <a href="{% url 'logout' %}"> Вихід </a>
+                    {% else %}
+                        <a  href="{% url 'registration' %}"> Реєстрація </a> | <a  href="{% url 'login' %}"> Авторизація </a>
+                    {% endif %}
+         </span>
+
+
+  </div>
+</nav>

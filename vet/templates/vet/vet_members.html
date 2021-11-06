@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Ветеринарні лікарі :: {{block.super}}
+
+{% endblock %}
+<div align="center">
+            <h1> Оберіть ветеринарного лікаря </h1>
+</div>
+{% block content %}
+{#    <div class="row" style="width: 50%" >#}
+
+
+
+            {% for item in users %}
+                <div class="card mx-auto" style="width: 50%" >
+{#                <div class="col-sm-5 mx-auto">#}
+                    <div class="card border-info " align="center" style="border: 2px solid; height:850px;">
+
+                    <div class="card-header">
+                        <h5 class="card-title">{{item.first_name}} {{item.last_name}}</h5>
+                    </div>
+                    <h5 class="card-title"> {{item.position}}</h5>
+                    <h5 class="card-title" style='color: #df4857'> E-mail: {{item.email}}</h5>
+                    {% if item.username == 'annahaiduk' %}
+                        <div class="card-footer">
+                            <h4> +38063922436 </h4>
+                        </div>
+                    {% else %}
+                        <div class="card-footer">
+                            <h4> +380679375004 </h4>
+                        </div>
+                    {% endif %}
+                    {% if item.user_photo %}
+                        <figure class="figure" style="margin-top: 1rem">
+                            <img src="{{item.user_photo.url}}" width = "450"  class="figure-img img-fluid rounded">
+                        </figure>
+                    {% endif %}
+                    </div>
+                </div>
+
+            {% endfor %}
+            <div class="col-md-3 mx-auto" style="margin-top: 2rem">
+                    <a href="{% url 'send_mail' %}" class="btn btn-spatial" style="margin-bottom: 5px !important; background: #7aba05; color: #fff">Перейти до онлайн консультації!</a>
+                </div>
+    </div>
+
+
+
+
+
+{% endblock %}

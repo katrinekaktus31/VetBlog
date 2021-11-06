@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Блог
+{% endblock %}
+
+
+{% block content %}
+    <div class="col" >
+
+
+    <div align="center"> <h2> Блог </h2>
+    </div>
+
+    {% for item in news %}
+        <div class="card mb-3">
+            <div class="card-header">
+                <h2 class="card-title  {% cycle 'text-danger' 'text-success' %}" align="center"> {{item.title}}</h2>
+            </div>
+            <div class="card-body " align="center">
+
+                <div  class = "media">
+                    {% if item.photo %}
+                        <img src="{{item.photo.url}}" width = "350" class = "mr-3">
+                    {% else %}
+                        <img src="https://picsum.photos/id/237/200/300" width= "350" class = "mr-3">
+                    {% endif %}
+                    <div class="media-body">
+                        <p class="card-text"> {{item.content|safe|linebreaks|truncatewords:50}}</p>
+                        <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Дізнатись більше...</a>
+                    </div>
+                </div>
+            </div>
+            <div align="right">
+                <div class = "card-footer text-muted">
+                    {{ item.created_at|date:'Y-m-d H:i' }}
+                </div>
+                <div class="card-footer">
+                    Автор:  <a href="{% url 'vet_members_list' %}"> {{item.author}}</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}
+
+    {% block sidebar %}
+
+        <div class="col-md-3 " style="height: 30rem">
+
+            {% include "inc/_sideform.html" %}
+        </div>
+    {% endblock %}
+</div>

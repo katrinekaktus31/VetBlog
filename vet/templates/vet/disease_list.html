@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    Перелік захворювань
+{% endblock %}
+
+
+
+{% block content %}
+<div class="col-md-9" >
+
+    <div align="center"> <h4> Перед Вами 16 найбільш поширених хвороб вагітних сук</h4>
+        <h5>Їх назва – це частина діагнозу, який зазвичай ставиться хворій тварині у клініках ветеринарної медицини при первинному обстежені.  Уникайте самостійної постановки діагнозу якщо Ви не фахівець!</h5>
+        <h6>Уважно ознайомтесь з інформацією у кожній закладці і спробуйте знайти серед них хворобу, схожу за описанням з ознаками захворювання Вашої улюблениці.</h6>
+        <h6>У випадку, якщо ви уже відвідали клініку ветеринарної медицини, а тварині поставлено діагноз та проводиться її лікування, ми все ж радимо знайти відповідну закладку і з'ясувати чи немає розбіжностей між описаною інформацією і поставленим тварині діагнозом.
+        </h6>
+
+    </div>
+
+    {% for item in diseases %}
+
+    <div class="card text-center mb-3">
+        <div class="card-header">
+                 <h4 class="card-title {% cycle 'text-danger' 'text-success' %}"> {{item.title}}</h4>
+        </div>
+
+        <div class="card-body">
+            <div  class = "media">
+                {% if item.photo %}
+                    <img src="{{item.photo.url}}" width = "550" class = "mr-3">
+                {% else %}
+                    <img src="https://i.picsum.photos/id/1062/367/267.jpg?hmac=xilWx6Df5qhXXlj7k9b7xLlBfdFEVIV55AG3-UeH8z4"
+                         width= "350" class = "mr-3">
+                {% endif %}
+                <div class="media-body">
+                    <h5 class="card-text" style="margin-top: 1rem"> {{item.feature|safe|linebreaks|truncatewords:30}}</h5>
+                    <a href="{{ item.get_absolute_url }}" class="btn btn-info" style="margin-bottom: 5px !important">Дізнатися більше...</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endfor %}
+
+
+{% endblock %}
+{% block sidebar %}
+
+<div class="col-md-3 " style="height: 30rem">
+
+        {% include "inc/_sideform.html" %}
+    </div>
+{% endblock %}
+</div>
