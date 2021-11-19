@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Створення новини
+
+{% endblock %}
+
+
+
+{% block content %}
+<div>
+<h1> Створення новини </h1>
+<div class="card">
+  <div class="card-body">
+    <form action="{% url 'create_news' %}" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    {{ form.media }}
+    {{form.as_p}}
+
+
+
+    <button type="submit" class="btn btn-primary btn-block"> Створити новину</button>
+</form>
+
+  </div>
+</div>
+</div>
+{% endblock %}
+

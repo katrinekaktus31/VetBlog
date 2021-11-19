@@ -1,0 +1,32 @@
+.contact{
+	padding: 4%;
+	height: 200px;
+}
+.col-md-3{
+	background: #1964b0;
+	padding: 4%;
+	border-top-left-radius: 0.5rem;
+	border-bottom-left-radius: 0.5rem;
+}
+.contact-info{
+	margin-top:10%;
+
+}
+.contact-info img{
+	margin-bottom: 15%;
+}
+.contact-info h2{
+	margin-bottom: 10%;
+
+}
+
+.contact-form label{
+	font-weight:600;
+}
+.btn btn-spatial{
+	font-weight: 600;
+	width: 5%;
+}
+.contact-form button:focus{
+	box-shadow:none;
+}

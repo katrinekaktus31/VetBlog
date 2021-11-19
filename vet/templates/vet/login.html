@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+   Авторизація:: {{block.super}}
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<h1> Авторизація </h1>
+    <div class="card mb-3 w-50" >
+        <form  method="post">
+
+            {% csrf_token %}
+            {{form.as_p}}
+{#            <input type="hidden" name="next" value="{{ request.path }}">#}
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+{#            <input type="hidden" name="next" value="{{ request.GET.next }}">#}
+            <button type="submit" class="btn btn-primary btn-block" style="margin-bottom: 5px !important;" > Авторизуватися </button>
+             <a href="{% url 'registration' %}" class="btn btn-primary btn-block " style="margin-bottom: 5px !important; background: #7aba05; color: #fff"> Реєстрація </a>
+        </form>
+
+
+
+{% endblock %}
