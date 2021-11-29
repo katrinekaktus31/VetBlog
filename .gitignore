@@ -1,7 +1,7 @@
 .env
 venv
 /media/
-/static_root/debug_toolbar
+/static_root
 /VetBlog/local_settings.py
 
 
@@ -112,7 +112,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+
 .venv
 env/
 venv/
