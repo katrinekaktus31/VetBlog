@@ -35,8 +35,7 @@ class PhotoImage(models.Model):
 
 
 class CustomUser(AbstractUser):
-    phone = models.CharField(null=True, blank=True, max_length=12, validators=[RegexValidator(r'^\d{3}-\d{3}-\d{4}$')],
-                             verbose_name='Телефон')
+    phone = models.CharField(null=True, blank=True, max_length=12, verbose_name='Телефон')
     # email = models.EmailField(max_length=70, blank=False, unique=True, null=False, verbose_name='Емейл')
     address = models.CharField(max_length=150, null=True, blank=True, verbose_name='Адресса')
     user_photo = models.ImageField(upload_to='user_photo_images/%Y/%m/%d/', verbose_name='Фото', blank=True)
@@ -108,6 +107,7 @@ class News(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата оновлення')
     photo = models.ImageField(upload_to='photos/%Y/%m/%d/', verbose_name='Фото', blank=True)
     author = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE, verbose_name="Автор")
+    link = models.TextField(blank=True, verbose_name='Посилання')
 
     """required fields: title, photo
     content (blank = True) - not required

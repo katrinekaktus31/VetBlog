@@ -7,18 +7,33 @@
 
 
 {% block content %}
+    <style>
+   img{
+    float:left; /* Выравнивание по левому краю */
+    margin: 15px 15px 15px 0; /* Отступы вокруг картинки */
+   }
+
+  </style>
     <div class="col-md-9" >
 
     <div class="card mb-3">
 
-        <div class="card-body" align="center">
+        <div class="card-body" >
             <h2 class="card-title {% cycle 'text-danger' 'text-success' %}"> {{news_item.title}}</h2>
             {% if news_item.photo %}
-                <img src="{{ news_item.photo.url }}" width = "450" class = "float-left mr-3">
+                <p class="card-text"> <img src="{{ news_item.photo.url }}" width = "450" class = "float-left mr-3">
+                {{ news_item.content|safe|linebreaks }}
+
+                </p>
+                <a href={{ news_item.link }}>{{ news_item.link }}</a>
             {% else %}
-                <img src="https://picsum.photos/id/237/200/300" width= "450" class = "float-left mr-3">
+                <p class="card-text"> <img src="https://picsum.photos/id/237/200/300" width= "450" class = "float-left mr-3">
+                {{ news_item.content|safe|linebreaks }}
+
+                </p>
+                <a href={{ news_item.link }}>{{ news_item.link }}</a>
             {% endif %}
-            <p class="card-text"> {{ news_item.content|safe|linebreaks }}</p>
+
         </div>
         <div align="right">
             <div class = "card-footer text-muted">

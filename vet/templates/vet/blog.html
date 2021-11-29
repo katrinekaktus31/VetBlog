@@ -6,6 +6,13 @@
 
 
 {% block content %}
+        <style>
+   img{
+    float:left; /* Выравнивание по левому краю */
+    margin: 15px 15px 15px 0; /* Отступы вокруг картинки */
+   }
+
+  </style>
     <div class="col" >
 
 
@@ -21,12 +28,17 @@
 
                 <div  class = "media">
                     {% if item.photo %}
-                        <img src="{{item.photo.url}}" width = "350" class = "mr-3">
+                        <p class="card-text"> <img src="{{item.photo.url}}" width = "350" class = "mr-3">
+                            {{item.content|safe|linebreaks|truncatewords:80}}</p>
+
                     {% else %}
-                        <img src="https://picsum.photos/id/237/200/300" width= "350" class = "mr-3">
+                        <p class="card-text"> <img src="https://picsum.photos/id/237/200/300" width= "350" class = "mr-3">
+                            {{item.content|safe|linebreaks|truncatewords:80}}
+                        </p>
+
                     {% endif %}
                     <div class="media-body">
-                        <p class="card-text"> {{item.content|safe|linebreaks|truncatewords:50}}</p>
+
                         <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Дізнатись більше...</a>
                     </div>
                 </div>
