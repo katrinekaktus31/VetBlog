@@ -1,0 +1,19 @@
+[33mcommit 23b61686110a9f8c1f295c7fd53e56a873f7c063[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Kateryna Brudko <katyabru31@gmail.com>
+Date:   Mon Nov 29 23:43:18 2021 +0200
+
+    Final commit
+
+[33mcommit 0bcad917bb3127fb9904aa605ebeb17ac9947fad[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Kateryna Brudko <katyabru31@gmail.com>
+Date:   Sat Nov 20 01:35:55 2021 +0200
+
+    The css was update
+    Header was create with such image
+    settings.py was update (correct send_mail param)
+
+[33mcommit 3af7e77f29e3e738da65362f82cd8482a6297c49[m
+Author: Kateryna Brudko <katyabru31@gmail.com>
+Date:   Sat Nov 6 02:45:22 2021 +0200
+
+    The first commit. All structure of project was created.
