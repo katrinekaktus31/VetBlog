@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn VetBlog.wsgi --log-file -
+web: gunicorn VetBlog.wsgi --preload --log-file -
